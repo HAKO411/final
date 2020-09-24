@@ -209,7 +209,7 @@ def portfolio_mangement():
         prets = []
         pvols = []
         
-        for p in range (1000):
+        for p in range (1500):
             weights = np.random.random(noa)
             weights /= np.sum(weights)
             prets.append(np.sum(rets.mean() * weights) * 12)
@@ -234,7 +234,7 @@ def portfolio_mangement():
         bnds = tuple((-1, 1) for x in weights)
         def min_func_port(weights):
             return statistics(weights)[1]
-        trets = np.linspace(0.0, 0.25, 50)
+        trets = np.linspace(0.0, 0.5, 10)
         tvols = []
         for tret in trets:
             cons = ({'type': 'eq', 'fun': lambda x: statistics(x)[0] - tret},
