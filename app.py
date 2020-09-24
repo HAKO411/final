@@ -224,14 +224,16 @@ def portfolio_mangement():
             return np.array([pret, pvol, pret / pvol])
         def min_func_sharpe(weights):
             return -statistics(weights)[2]
-        cons = ({'type': 'eq', 'fun': lambda x: statistics(x)[0] - tret},
-                {'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
-        bnds = tuple((-1, 1) for x in weights)
+        cons = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+        bnds = tuple((-1, 1) for x in range(noa))
         opts = sco.minimize(min_func_sharpe, noa * [1. / noa,],  
                             method='SLSQP', bounds=bnds, constraints=cons)
         def min_func_port(weights):
             return statistics(weights)[1]
         optv = sco.minimize(min_func_variance, noa * [1. / noa,], method='SLSQP', bounds=bnds,constraints=cons)
+        bnds = tuple((-1, 1) for x in weights)
+        def min_func_port(weights):
+            return statistics(weights)[1]
         trets = np.linspace(0.0, 0.25, 50)
         tvols = []
         for tret in trets:
