@@ -209,7 +209,7 @@ def portfolio_mangement():
         prets = []
         pvols = []
         
-        for p in range (10000):
+        for p in range (2000):
             weights = np.random.random(noa)
             weights /= np.sum(weights)
             prets.append(np.sum(rets.mean() * weights) * 12)
