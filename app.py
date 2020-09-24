@@ -228,8 +228,8 @@ def portfolio_mangement():
         bnds = tuple((-1, 1) for x in range(noa))
         opts = sco.minimize(min_func_sharpe, noa * [1. / noa,],  
                             method='SLSQP', bounds=bnds, constraints=cons)
-        def min_func_port(weights):
-            return statistics(weights)[1]
+        def min_func_variance(weights):
+            return statistics(weights)[1]**2
         optv = sco.minimize(min_func_variance, noa * [1. / noa,], method='SLSQP', bounds=bnds,constraints=cons)
         bnds = tuple((-1, 1) for x in weights)
         def min_func_port(weights):
