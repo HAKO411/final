@@ -234,7 +234,7 @@ def portfolio_mangement():
         bnds = tuple((-1, 1) for x in weights)
         def min_func_port(weights):
             return statistics(weights)[1]
-        trets = np.linspace(0.0, 0.5, 10)
+        trets = np.linspace(0.0, 0.5, 5)
         tvols = []
         for tret in trets:
             cons = ({'type': 'eq', 'fun': lambda x: statistics(x)[0] - tret},
