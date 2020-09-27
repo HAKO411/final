@@ -149,7 +149,7 @@ def portfolio_mangement():
                 apartment_std = tx.transform(apartment)
                 price_std = corpmodel.predict(apartment_std)
                 prices[i]= ty.inverse_transform(price_std)
-            realestate_asset_value[k] =truncate(prices.sum(),-2)
+            realestate_asset_value[len(sales_time_up)-k] =truncate(prices.sum(),-2)
         return(realestate_asset_value)
     
     if request.method == 'POST':   
